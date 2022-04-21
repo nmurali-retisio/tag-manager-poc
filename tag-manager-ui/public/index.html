@@ -26,6 +26,7 @@
   <script async src="http://localhost:9000/rtag.js"></script>
   <script>
     console.log("Testing")
+    console.log(data)
     var dataLayer = window.dataLayer || [];
     dataLayer.push({
       'event': 'blog post view',
@@ -41,7 +42,210 @@
   <button onclick="rtag('event', {
     'method': 'pageViewEvent',
     'value': '1132'
-})">Directly From the DOM</button>
+})">Directly From the DOM</button> <br>
+  1. Login API
+  <button onclick='rtag("event", {"method":"login","value":{  "profileID": "aa@xyx.com", 
+    "storeID": "Store_001",
+    "timestamp": new Date().toString(),
+    "DeviceParam": {
+    "deviceType": window.mobilecheck?"mobile" : "desktop-browser",
+    "mobileOS": "",
+    "browser": window.getBrowserName(),
+    "locale": navigator.language,
+    "pageType": "PDP",
+    "pageUrl": window.location.toString(),
+    "ip": "",
+    "geoLocation": ""  }}})'>
+    Login
+  </button><br>
+  2. Logout API
+
+  <button onclick='rtag("event",
+  {
+  "method": "logout", 
+  "value": {  
+    "profileID": "aa@xyx.com",
+    "storeID": "Store_001",
+    "timestamp": new Date().toString(),
+    "DeviceParam": {
+      "deviceType": window.mobilecheck?"mobile" : "desktop-browser",
+      "mobileOS": "",
+      "browser": window.getBrowserName(),
+      "locale": navigator.language,
+      "pageType": "PDP",
+      "pageUrl": window.location.toString(),
+      "ip": "",
+      "geoLocation": ""  }}})'>
+    Logout
+  </button><br>
+
+  3. Click Promotion
+
+  <button onclick='rtag("event", {
+    "method" : "clickPromotion", 
+    "value" : {  
+      "SkuID": "SKU-6563",
+      "ProductID": "PRD-75775 ",
+      "catalogID": " catalog -1",
+      "categories": [    "cat-1",    "cat11",    "cat111"  ],
+      "CampaignID": "CAM-546",
+      "PromotionSlot": "",
+      "url": "adkksadj",
+      "profileIid": "aaa@xyz.com",
+      "visitorIid": "",
+      "storeID": "storeID",
+      "timestamp": "timestamp",
+      "DeviceParam": {
+      "deviceType": window.mobilecheck?"mobile" : "desktop-browser",
+      "mobileOS": "",
+      "browser": window.getBrowserName(),
+      "locale": navigator.language,
+      "pageType": "PDP",
+      "pageUrl": window.location.toString(),
+        "ip": "",
+        "geoLocation": ""  }}})'>Click Promotion</button> <br>
+
+  4. Click Product
+
+  <button onclick='rtag("event", {"method" : "clickProduct", "value" :
+    {  "SkuID": "SKU-6563",
+    "ProductID": "PRD-75775",
+    "catalogID": " catalog -1",
+    "categories": [    "cat-1",    "cat11",    "cat111"  ],
+    "searchAttribution": true,
+    "recommendationAttribution": false,
+    "browseAttribution": false,
+    "promotionAttribution": false,
+    "searchAttributionDetails":
+    {    
+      "query": "Red shirt",
+      "positionRow": 7,
+      "positionColumn": 2  },
+      "recommendationAttributionDetails":
+    { 
+        "recommendationType": "",
+        "recommendationLocation": "",
+        "recommendationSlot": null  },
+          "browseAttributionDetails": {
+            "assortmentTitle": "",
+            "categories": { 
+              "level1": "", 
+              "level2": "",      
+              "level3": "",      
+              "level4": "",     
+              "level 5": ""    },    
+                "url": "",    
+                "listingID": ""  },  
+                  "profileID": "aaa@xyz.com", 
+                  "visitorID": "",  
+                  "timestamp": new Date().toString(),
+                  "DeviceParam": {
+                    "deviceType": window.mobilecheck?"mobile" : "desktop-browser",
+                    "mobileOS": "",
+                    "browser": window.getBrowserName(),
+                    "locale": navigator.language,
+                    "pageType": "PDP",
+                    "pageUrl": window.location.toString(),
+                    "ip": "",
+                    "geoLocation": ""  }}})'>Click Product</button> <br>
+
+  5. Search Product
+
+  <button onclick='rtag("event", { "method" : "searchProduct", "value" :
+  { 
+    "queryString": "SKU-6563",  
+    "isTypedQuery": true,  
+    "isAutoSuggestedQuery": false,  
+    "isCorrectedQuery": false,  
+    "queryTokens": "",  
+    "resultFound": true,  
+    "profileID": "aaa@xyz.com",  
+    "visitorID": "",  
+    "timestamp": new Date().toString()
+    }})'>Search Product</button> <br>
+
+  6. Add Item to cart
+
+  <button onclick='rtag("event", 
+  { "method" : "addItemToCart", "value" :
+    {  
+      "catalogID": "catalog -1",  
+      "currency": "USD",  
+      "cartValue": 8.77,  
+      "items": [    
+        {      
+          "skuId": "SKU_12345",      
+          "productId": "PRD_34567",
+          "coupon": "SUMMER_FUN",      
+          "discount": 2.22,      
+          "brand": "Dresberry",      
+          "categoryIds": [        "CAT-7565",        "CAT-3868"      ],      
+          "price": 9.99,      
+          "quantity": 1,      
+          "shippingOption": "STD",      
+          "freeShipping": false,      
+          "modelNumber": "PRF1667HB",      
+          "attributedToSearch": true,      
+          "attributedToBrowse": false,      
+          "attributedToRecommendation": false,      
+          "attributedToPromotion": false,      
+          "searchAttributionDetails": {    
+            "query": "Red shirt",    
+            "positionRow": 7,    
+            "positionColumn": 2  
+          },  
+            "recommendationAttributionDetails": 
+            {    
+              "recommendationType": "",    
+              "recommendationLocation": "",    
+              "recommendationSlot": null  
+            },  
+            "browseAttributionDetails": {    
+              "assortmentTitle": "",    
+              "categories": {      
+                "level1": "",      
+                "level2": "",      
+                "level3": "",      
+                "level4": "",      
+                "level 5": ""    
+              }          
+            }} ],  
+              "profileID": "aaa@xyz.com",  
+              "visitorID": "",  
+              "timestamp": new Date().toString()}})'>Add to Cart</button> <br>
+
+  7. Remove Item From cart
+
+  <button onclick='rtag("event", { "method" : "addItemToCart", "value" : 
+  {  
+    "skuID": "SKU_12345",  
+    "productID": "PRD_34567",  
+    "catalogID": "CAT-1",  
+    "visitorID": "123e4567-e89b-12d3-a456",  
+    "profileID": "rob@gmail.com",  
+    "timestamp": new Date().toString()}})'>Remove Item</button> <br>
+
+  8. Change Item Quantity 
+
+  <button onclick='rtag("event", { "method" : "changeQuantity", "value" : 
+  {  "skuID": "SKU_12345",  
+  "visitorID": "123e4567-e89b-12d3-a456",  
+  "profileID": "rob@gmail.com",  
+  "catalogID": "CAT-1",  
+  "updatedQuantity": 2,  
+  "timestamp": new Date().toString()}})'>Change Quantity</button> <br>
+
+
+
+
+
+
+
+
+
+
+
+
   <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
