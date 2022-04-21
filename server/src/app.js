@@ -14,7 +14,12 @@ var corsOptions = {
 
 const CustomEvents = {
     productClickEvent: 0,
-    pageViewEvent: 0
+    pageViewEvent: 0,
+    login: 0,
+    logout: 0,
+    clickPromotion: 0,
+    clickProduct: 0,
+    addItemToCart: 0
 }
 
 app.use(express.json())
