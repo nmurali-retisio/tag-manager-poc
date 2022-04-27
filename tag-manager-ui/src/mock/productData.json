@@ -1,0 +1,64 @@
+{
+    "items": [
+        {
+            "skuId": "SKU_12345",
+            "productId": "PRD_34567",
+            "catalogID": "CAT-1",
+            "productName": "LG Smart TVs",
+            "coupon": "SUMMER_FUN",
+            "discount": 200.22,
+            "brand": "LG",
+            "price": 1097.99,
+            "quantity": 1,
+            "shippingOption": "STD",
+            "freeShipping": false,
+            "modelNumber": "PRF1667HB",
+            "Description": "Entertainment access made easy. LG's fan-favorite webOS platform delivers streaming simplicity. Featuring streaming apps like Netflix, Hulu, Sling, Prime Video and more. A huge library of content and streaming services are all there at your fingertips."
+        },
+        {
+            "skuId": "SKU_45321",
+            "productId": "PRD_67345",
+            "catalogID": "CAT-1",
+            "productName": "Samsung Smart TVs",
+            "coupon": "SUMMER_FUN",
+            "discount": 222.00,
+            "brand": "Samsung",
+            "price": 1999.99,
+            "quantity": 1,
+            "shippingOption": "STD",
+            "freeShipping": false,
+            "modelNumber": "OLED77C1PUB",
+            "Description": "Product Features Smart TV By webOS Cinema HDR (Dolby Vision, HDR10, HLG) 4 HDMI Connections | 3 USB Ports | 1 Ethernet Port Built-In Google Assistant | Amazon Alexa | Works With Apple Airplay 2"
+        },
+        {
+            "skuId": "SKU_3467435",
+            "productId": "PRD_463563",
+            "catalogID": "CAT-2",
+            "productName": "MacBook Pro",
+            "coupon": "SUMMER_FUN",
+            "discount": 120.00,
+            "brand": "Apple",
+            "price": 1899.99,
+            "quantity": 1,
+            "shippingOption": "STD",
+            "freeShipping": true,
+            "modelNumber": "CQ75Q60bAFXZA",
+            "Description": "Apple-designed M1 chip for a giant leap in CPU, GPU, and machine learning performance Get more done with up to 20 hours of battery life, the longest ever in a Mac"
+        },
+        {
+            "skuId": "SKU_1025674",
+            "productId": "PRD_267525",
+            "catalogID": "CAT-3",
+            "productName": "iPhone XS",
+            "coupon": "SUMMER_FUN",
+            "discount": 20.50,
+            "brand": "Apple",
+            "price": 1197.99,
+            "quantity": 1,
+            "shippingOption": "STD",
+            "freeShipping": false,
+            "modelNumber": "QHG673bAFXZA",
+            "Description": "Most Advanced iPhone Ever Features a 5.8-Inch and 6.5-Inch All-Screen Design, with Powerful A12 Bionic Chip and a Breakthrough Dual Camera System"
+        }
+    ]
+}
