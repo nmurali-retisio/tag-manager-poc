@@ -113,4 +113,15 @@ window.rtag = ((methodType, data) => {
             body: JSON.stringify(data)
         })
     }
+
+    if (methodType === 'updateOrderStatus') {
+        fetch(`http://localhost:9000//v1/sites/${siteId}/orders/${orderId}/updateOrderStatus`, {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+    }
 }) 

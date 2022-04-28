@@ -24,7 +24,8 @@ const CustomEvents = {
     checkoutEvent: 0,
     paymentEvent: 0,
     onUpdateEvent: 0,
-    orderPlaceEvent: 0
+    orderPlaceEvent: 0,
+    updateOrderStatusEvent: 0
 }
 
 
@@ -231,6 +232,24 @@ app.post('/v1/sites/:siteId/orders/:orderId/placeOrder', cors(corsOptions), (req
     //console.log(req.body)
     res.status(200).send({
         "orderPlaceEvent": CustomEvents.orderPlaceEvent,
+        "data": {
+            "id": "e6f36a",
+            "status": "success",
+            "createdAt": 1442286338435
+        }
+    })
+})
+
+app.post('/v1/sites/:siteId/orders/:orderId/updateOrderStatus', cors(corsOptions), (req, res) => {
+    const eventType = req.body.method;
+    if (CustomEvents.hasOwnProperty(eventType)) {
+        //console.log("Method exists")
+        CustomEvents[eventType] = CustomEvents[eventType] + 1
+        //console.log("New Event counter", CustomEvents)
+    }
+    //console.log(req.body)
+    res.status(200).send({
+        "updateOrderStatusEvent": CustomEvents.updateOrderStatusEvent,
         "data": {
             "id": "e6f36a",
             "status": "success",

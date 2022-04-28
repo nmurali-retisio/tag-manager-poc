@@ -14,6 +14,7 @@ function App() {
   const [paymentInititate, setPaymentInititate] = useState(0)
   const [onUpdate, setOnUpdate] = useState(0)
   const [orderPlaced, setOrderPlaced] = useState(0)
+  const [orderStatus, setOrderStatus] = useState(0)
 
   const siteId = 1
   const cartID = 2
@@ -38,6 +39,7 @@ function App() {
         setPaymentInititate(body.paymentEvent)
         setOnUpdate(body.onUpdateEvent)
         setOrderPlaced(body.orderPlaceEvent)
+        setOrderStatus(body.updateOrderStatusEvent)
       })
   }, [])
 
