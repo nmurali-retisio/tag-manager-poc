@@ -1,8 +1,9 @@
 // var location = navigator.geolocation.getCurrentPosition(window.setLocation());
 window.rtag = ((methodType, data) => {
-    if (methodType === 'event' )  {
+    let url = window.siteID+(methodType === 'eventType2' ? '/carts/'+window.cartID : '')+'/'+data.method
+  
         console.log(data)
-        fetch('http://localhost:9000/tag', {
+        fetch('http://localhost:9000/integration/v1/sites/'+url, {
             method: 'POST',
             mode: 'cors',
             headers: {
@@ -10,8 +11,7 @@ window.rtag = ((methodType, data) => {
             },
             body: JSON.stringify(data)
         })
-    }
-}) 
+})
 
 window.mobileCheck = function() {
     let check = false;

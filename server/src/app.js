@@ -19,7 +19,12 @@ const CustomEvents = {
     logout: 0,
     clickPromotion: 0,
     clickProduct: 0,
-    addItemToCart: 0
+    addItemToCart: 0,
+    searchProduct: 0,
+    removeItemFromCart: 0,
+    changeQuantity: 0
+    
+
 }
 
 app.use(express.json())
@@ -33,22 +38,151 @@ app.get('/hello', (req, res) => {
     })
 })
 
+
 app.get('/cors', cors(corsOptions), (req, res) => {
     res.send({
         message: 'Hello World!'
     })
 })
 
-app.post('/tag', cors(corsOptions), (req, res) => {
+// app.post('/tag', cors(corsOptions), (req, res) => {
+//     const eventType = req.body.method;
+//     if (CustomEvents.hasOwnProperty(eventType)) {
+//         console.log("Method exists")
+//         CustomEvents[eventType] = CustomEvents[eventType] + 1
+//         console.log("New Event counter", CustomEvents)
+//     }
+//     res.status(201).send({
+//         message: "Received Message"
+//     })
+// })
+
+app.post('/integration/v1/sites/:siteID/login', cors(corsOptions), (req, res) => {
     const eventType = req.body.method;
     if (CustomEvents.hasOwnProperty(eventType)) {
         console.log("Method exists")
         CustomEvents[eventType] = CustomEvents[eventType] + 1
         console.log("New Event counter", CustomEvents)
-    }
-    res.send({
-        message: "Received Message"
-    })
+        let timeStamp = Date.now();
+        res.status(201).send ({
+            "data": {   "id": "e6f36a",    
+                        "status": "success",    
+                        "createdAt": timeStamp
+                    }
+        })
+    } 
+})
+
+app.post('/integration/v1/sites/:siteID/logout', cors(corsOptions), (req, res) => {
+    const eventType = req.body.method;
+    if (CustomEvents.hasOwnProperty(eventType)) {
+        console.log("Method exists")
+        CustomEvents[eventType] = CustomEvents[eventType] + 1
+        console.log("New Event counter", CustomEvents)
+        let timeStamp = Date.now();
+        res.status(201).send ({
+            "data": {   "id": "e6f36a",    
+                        "status": "success",    
+                        "createdAt": timeStamp
+                    }
+        })
+    } 
+})
+
+app.post('/integration/v1/sites/:siteID/clickPromotion', cors(corsOptions), (req, res) => {
+    const eventType = req.body.method;
+    if (CustomEvents.hasOwnProperty(eventType)) {
+        console.log("Method exists")
+        CustomEvents[eventType] = CustomEvents[eventType] + 1
+        console.log("New Event counter", CustomEvents)
+        let timeStamp = Date.now();
+        res.status(201).send ({
+            "data": {   "id": "e6f36a",    
+                        "status": "success",    
+                        "createdAt": timeStamp
+                    }
+        })
+    } 
+})
+
+app.post('/integration/v1/sites/:siteID/clickProduct', cors(corsOptions), (req, res) => {
+    const eventType = req.body.method;
+    if (CustomEvents.hasOwnProperty(eventType)) {
+        console.log("Method exists")
+        CustomEvents[eventType] = CustomEvents[eventType] + 1
+        console.log("New Event counter", CustomEvents)
+        let timeStamp = Date.now();
+        res.status(201).send ({
+            "data": {   "id": "e6f36a",    
+                        "status": "success",    
+                        "createdAt": timeStamp
+                    }
+        })
+    } 
+})
+
+app.post('/integration/v1/sites/:siteID/searchProduct', cors(corsOptions), (req, res) => {
+    const eventType = req.body.method;
+    if (CustomEvents.hasOwnProperty(eventType)) {
+        console.log("Method exists")
+        CustomEvents[eventType] = CustomEvents[eventType] + 1
+        console.log("New Event counter", CustomEvents)
+        let timeStamp = Date.now();
+        res.status(201).send ({
+            "data": {   "id": "e6f36a",    
+                        "status": "success",    
+                        "createdAt": timeStamp
+                    }
+        })
+    } 
+})
+
+app.post('/integration/v1/sites/:siteID/carts/:cartID/addItemToCart', cors(corsOptions), (req, res) => {
+    const eventType = req.body.method;
+    if (CustomEvents.hasOwnProperty(eventType)) {
+        console.log("Method exists")
+        CustomEvents[eventType] = CustomEvents[eventType] + 1
+        console.log("New Event counter", CustomEvents)
+        let timeStamp = Date.now();
+        res.status(201).send ({
+            "data": {   "id": "e6f36a",    
+                        "status": "success",    
+                        "createdAt": timeStamp
+                    }
+        })
+    } 
+})
+
+app.post('/integration/v1/sites/:siteID/carts/:cartID/removeItemFromCart', cors(corsOptions), (req, res) => {
+    const eventType = req.body.method;
+    if (CustomEvents.hasOwnProperty(eventType)) {
+        console.log("Method exists")
+        CustomEvents[eventType] = CustomEvents[eventType] + 1
+        console.log("New Event counter", CustomEvents)
+        let timeStamp = Date.now();
+        res.status(201).send ({
+            "data": {   "id": "e6f36a",    
+                        "status": "success",    
+                        "createdAt": timeStamp
+                    }
+        })
+    } 
+})
+
+app.post('/integration/v1/sites/:siteID/carts/:cartID/changeQuantity', cors(corsOptions), (req, res) => {
+    const eventType = req.body.method;
+    if (CustomEvents.hasOwnProperty(eventType)) {
+        console.log("Method exists")
+        CustomEvents[eventType] = CustomEvents[eventType] + 1
+        console.log("New Event counter", CustomEvents)
+        let timeStamp = Date.now();
+        res.status(201).send ({
+            "data": {   "id": "e6f36a",    
+                        "status": "success",    
+                        "createdAt": timeStamp
+                    }
+        })
+    } 
 })
 
 app.get('/events', cors(corsOptions), (req, res) => {
