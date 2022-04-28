@@ -47,70 +47,70 @@ function App() {
     <div className='App'>
       <h1>Dashboard</h1>
       <div className="dashbord">
-        <div class="card">
-          <div class="container">
+        <div className="card">
+          <div className="container">
             <h4><b>Product Added to cart:</b></h4>
             <p>{productAdd}</p>
           </div>
         </div>
 
-        <div class="card">
-          <div class="container">
+        <div className="card">
+          <div className="container">
             <h4><b>Cart view:</b></h4>
             <p> {CartView}</p>
           </div>
         </div>
-        <div class="card">
-          <div class="container">
+        <div className="card">
+          <div className="container">
             <h4><b>Checkout inititate:</b></h4>
             <p> {checkout}</p>
           </div>
         </div>
-        <div class="card">
-          <div class="container">
+        <div className="card">
+          <div className="container">
             <h4><b>Update shipping Address:</b></h4>
             <p> {onUpdate}</p>
           </div>
         </div>
 
-        <div class="card">
-          <div class="container">
+        <div className="card">
+          <div className="container">
             <h4><b>Payment inititate:</b></h4>
             <p> {paymentInititate}</p>
           </div>
         </div>
-        <div class="card">
-          <div class="container">
+        <div className="card">
+          <div className="container">
             <h4><b>Order Placed</b></h4>
             <p> {orderPlaced}</p>
           </div>
         </div>
-        <div class="card">
-          <div class="container">
+        <div className="card">
+          <div className="container">
             <h4><b>Product Added to wishlist:</b></h4>
             <p>{wishlistCount}</p>
           </div>
         </div>
-        <div class="card">
-          <div class="container">
+        <div className="card">
+          <div className="container">
             <h4><b>Product Remove to wishlist:</b></h4>
             <p>{wishListRemoveCount}</p>
           </div>
         </div>
-        <div class="card">
-          <div class="container">
+        <div className="card">
+          <div className="container">
             <h4><b>Page Views:</b></h4>
             <p> {pageView}</p>
           </div>
         </div>
-        <div class="card">
-          <div class="container">
+        <div className="card">
+          <div className="container">
             <h4><b>Product clicks:</b></h4>
             <p> {productClicks}</p>
           </div>
         </div>
-        <div class="card">
-          <div class="container">
+        <div className="card">
+          <div className="container">
             <h4><b>Product Remove from cart:</b></h4>
             <p>{productRemove}</p>
           </div>
