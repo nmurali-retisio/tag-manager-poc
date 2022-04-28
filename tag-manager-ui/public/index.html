@@ -23,10 +23,14 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
   <title>React App</title>
+  <script>
+  window.siteID = 123456;
+  window.cartID = 4723;
+  </script>
   <script async src="http://localhost:9000/rtag.js"></script>
   <script>
     console.log("Testing")
-    console.log(data)
+    // console.log(data)
     var dataLayer = window.dataLayer || [];
     dataLayer.push({
       'event': 'blog post view',
@@ -166,7 +170,7 @@
 
   6. Add Item to cart
 
-  <button onclick='rtag("event", 
+  <button onclick='rtag("eventType2", 
   { "method" : "addItemToCart", "value" :
     {  
       "catalogID": "catalog -1",  
@@ -216,7 +220,7 @@
 
   7. Remove Item From cart
 
-  <button onclick='rtag("event", { "method" : "addItemToCart", "value" : 
+  <button onclick='rtag("eventType2", { "method" : "removeItemFromCart", "value" : 
   {  
     "skuID": "SKU_12345",  
     "productID": "PRD_34567",  
@@ -227,7 +231,7 @@
 
   8. Change Item Quantity 
 
-  <button onclick='rtag("event", { "method" : "changeQuantity", "value" : 
+  <button onclick='rtag("eventType2", { "method" : "changeQuantity", "value" : 
   {  "skuID": "SKU_12345",  
   "visitorID": "123e4567-e89b-12d3-a456",  
   "profileID": "rob@gmail.com",  
