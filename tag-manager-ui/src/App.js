@@ -378,7 +378,7 @@ function App() {
 
         </>}
       <section className={sidePanelToggle === false ? "hideSidePanel " : 'sidepanel'}>
-        <a class="closebtn" onClick={() => setSidePanelToggle(false)}>×</a>
+        <a className="closebtn" onClick={() => setSidePanelToggle(false)}>×</a>
         <h2 className='itemLabel'>Cart</h2>
         <div>
           <ul className='itemLists'>
