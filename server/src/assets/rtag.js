@@ -1,6 +1,7 @@
 const siteId = 1
 const cartID = 2
-const wishlistId = 3, orderId = "m-775665"
+const wishlistId = 3,
+    orderId = "m-775665"
 
 window.rtag = ((methodType, data) => {
     if (methodType === 'event') {
@@ -82,6 +83,28 @@ window.rtag = ((methodType, data) => {
 
     if (methodType === 'initiatePayment') {
         fetch(`http://localhost:9000/v1/sites/${siteId}/orders/${orderId}/initiatePayment`, {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+    }
+
+    if (methodType === 'addOrModifyShippingOptions') {
+        fetch(`http://localhost:9000/v1/sites/${siteId}/orders/${orderId}/addOrModifyShippingOptions`, {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+    }
+
+    if (methodType === 'placeOrder') {
+        fetch(`http://localhost:9000/v1/sites/${siteId}/orders/${orderId}/placeOrder`, {
             method: 'POST',
             mode: 'cors',
             headers: {

@@ -23,6 +23,8 @@ const CustomEvents = {
     cartViewEvent: 0,
     checkoutEvent: 0,
     paymentEvent: 0,
+    onUpdateEvent: 0,
+    orderPlaceEvent: 0
 }
 
 
@@ -201,6 +203,41 @@ app.post('/v1/sites/:siteId/orders/:orderId/initiatePayment', cors(corsOptions),
     })
 })
 
+app.post('/v1/sites/:siteId/orders/:orderId/addOrModifyShippingOptions', cors(corsOptions), (req, res) => {
+    const eventType = req.body.method;
+    if (CustomEvents.hasOwnProperty(eventType)) {
+        //console.log("Method exists")
+        CustomEvents[eventType] = CustomEvents[eventType] + 1
+        //console.log("New Event counter", CustomEvents)
+    }
+    //console.log(req.body)
+    res.status(200).send({
+        "onUpdateEvent": CustomEvents.onUpdateEvent,
+        "data": {
+            "id": "e6f36a",
+            "status": "success",
+            "createdAt": 1442286338435
+        }
+    })
+})
+
+app.post('/v1/sites/:siteId/orders/:orderId/placeOrder', cors(corsOptions), (req, res) => {
+    const eventType = req.body.method;
+    if (CustomEvents.hasOwnProperty(eventType)) {
+        //console.log("Method exists")
+        CustomEvents[eventType] = CustomEvents[eventType] + 1
+        //console.log("New Event counter", CustomEvents)
+    }
+    //console.log(req.body)
+    res.status(200).send({
+        "orderPlaceEvent": CustomEvents.orderPlaceEvent,
+        "data": {
+            "id": "e6f36a",
+            "status": "success",
+            "createdAt": 1442286338435
+        }
+    })
+})
 
 app.get('/rtag.js', cors(corsOptions), (req, res) => {
     console.log("Current dir name", __dirname)

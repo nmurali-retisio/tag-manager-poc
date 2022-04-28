@@ -27,7 +27,7 @@ function App() {
   const [deviceType, setDeviceType] = useState('')
   const [paymentType, setPaymentType] = useState('')
   const [loadingToggle, setLoadingToggle] = useState(false)
-  const [orderPlaced, setOrderPlaced] = useState(true)
+  const [orderPlaced, setOrderPlaced] = useState(false)
 
   let cartProduct = {
     productId: '',
@@ -227,6 +227,28 @@ function App() {
     setPaymentType(value)
   }
 
+  const onUpdateHandler = () => {
+    setAddressToggle(false)
+    window.rtag('addOrModifyShippingOptions', {
+      'method': 'onUpdateEvent',
+      'data': {
+        "profileID": "rh28@bm.com",
+        "visitorID": "",
+        "items": [{
+          "skuID": "232438",
+          "shippingMethod": "ISPU",
+          "shippingType": "Store",
+          "pickupStoreID": "store1",
+          "pickupStorePostalCode": "32746",
+          "shippingPostalCode": "",
+          "shippingCharge": 4.99
+        }],
+        'timeStamp': moment(new Date()).format("DD-MM-YYYYTHH:MM")
+      }
+    })
+
+  }
+
   const inititatePayment = () => {
     window.rtag('initiatePayment', {
       'method': 'paymentEvent',
@@ -246,23 +268,63 @@ function App() {
 
 
   const orderPlacedHandler = () => {
+    window.rtag('placeOrder', {
+      'method': 'orderPlaceEvent',
+      'data': {
+        "orderID": "m-775665",
+        "profileID": "rh28@bm.com",
+        "visitorID": "",
+        "items": [{
+          "skuID": "232438",
+          "modelNumber": "PRF1667HB",
+          "productID": "232438",
+          "quantity": "2",
+          "listPrice": 99.88,
+          "itemTax": 15.56,
+          "salePrice": 199.76,
+          "promotionID": "4c916580-422d-40c4-8055-030172d0970d",
+          "discountType": "Percentage",
+          "discount": 19.76,
+          "shippingPostalCode": "32746"
+        }],
+        "currency": "USD",
+        "orderPromotionID": "4c916580-422d-40c4-8055-030172d0xxxd",
+        "orderPromotionDiscount": 1.2,
+        "totalOrderValue": 180,
+        "totaltax": 15.56,
+        "totalDiscount": 19.76,
+        "paymentMethod": "VISA",
+        "shippingMethod": "ISPU",
+        "shippingType": "Store",
+        "pickupStoreID": "store1",
+        "pickupStorePostalCode": "32746",
+        "shippingPostalCode": "",
+        "shippingCharge": 4.99,
+        'timeStamp': moment(new Date()).format("DD-MM-YYYYTHH:MM")
+      }
+    })
     console.log(cartItems.length)
     for (let i = cartItems.length; i > 0; i--) {
       console.log(cartItems.length)
       cartItems.pop()
     }
     if (cartItems.length === 0) {
-      setOrderPlaced(false)
+      setOrderPlaced(true)
       setItemCount(0)
     }
     console.log(cartItems)
   }
 
+  const onChangetoHome = () => {
+
+    setOrderPlaced(false)
+    setLoadingToggle(false)
+  }
 
   return (
     <div className='main-container'>
       <header className='topheader'>
-        <Button className='homeButton' type='primary' onClick={() => setLoadingToggle(false)}>Home</Button>
+        <Button className='homeButton' type='primary' onClick={onChangetoHome}>Home</Button>
         <div className='hearderCartLabel'>
           <Button className='cartLabel'>Wishlist <label className='cartLabel'>{wishItemCount}</label></Button>
 
@@ -310,9 +372,9 @@ function App() {
         </section> :
         <>
           <h3 className='messageHeading'>Processing with payment : {paymentType}</h3>
-          {orderPlaced ? <> <Spin className='loading' size="large" />  <section className='cartViewList'>
+          {orderPlaced ? <label className='successLabel'>Order Successfully Placed</label> : <> <Spin className='loading' size="large" />  <section className='cartViewList'>
             <Button className='processOrder' type="primary" onClick={orderPlacedHandler} >Placed</Button>
-            <Button className='cancelPayment' type="ghost" onClick={() => setLoadingToggle(false)}>Cancel</Button></section></> : <label className='successLabel'>Order Successfully Placed</label>}
+            <Button className='cancelPayment' type="ghost" onClick={() => setLoadingToggle(false)}>Cancel</Button></section></>}
 
         </>}
       <section className={sidePanelToggle === false ? "hideSidePanel " : 'sidepanel'}>
@@ -366,7 +428,7 @@ function App() {
 711-2880 Nulla St.
 Mankato Mississippi 96522
 (257) 563-7401" autoSize={{ minRows: 3, maxRows: 5 }} readOnly={addressToggle} ></TextArea>
-                    {addressToggle ? <Button className='updateAddress' onClick={() => setAddressToggle(false)} >Edit Address</Button> : <Button className='updateAddress' type="primary" onClick={() => setAddressToggle(true)}>Update</Button>}
+                    {addressToggle ? <Button className='updateAddress' onClick={onUpdateHandler} >Edit Address</Button> : <Button className='updateAddress' type="primary" onClick={() => setAddressToggle(true)}>Update</Button>}
                   </div>
                   <hr></hr>
                   <div className='cartViewList'>

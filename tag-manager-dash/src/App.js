@@ -12,6 +12,8 @@ function App() {
   const [wishListRemoveCount, setWishListRemoveCount] = useState(0)
   const [checkout, setCheckout] = useState(0)
   const [paymentInititate, setPaymentInititate] = useState(0)
+  const [onUpdate, setOnUpdate] = useState(0)
+  const [orderPlaced, setOrderPlaced] = useState(0)
 
   const siteId = 1
   const cartID = 2
@@ -34,24 +36,87 @@ function App() {
         setCartView(body.cartViewEvent)
         setCheckout(body.checkoutEvent)
         setPaymentInititate(body.paymentEvent)
+        setOnUpdate(body.onUpdateEvent)
+        setOrderPlaced(body.orderPlaceEvent)
       })
   }, [])
 
 
 
   return (
-    <div className="App">
+    <div className='App'>
       <h1>Dashboard</h1>
-      <h2>Random website</h2>
-      <h3>Cart view : {CartView}</h3>
-      <h3>Page Views: {pageView}</h3>
-      <h3>Product clicks: {productClicks}</h3>
-      <h3>Payment inititate: {paymentInititate}</h3>
-      <h3>Checkout inititate: {checkout}</h3>
-      <h3>Product Added to cart : {productAdd}</h3>
-      <h3>Product Remove from cart: {productRemove}</h3>
-      <h3>Product Added to wishlist : {wishlistCount}</h3>
-      <h3>Product Remove to wishlist : {wishListRemoveCount}</h3>
+      <div className="dashbord">
+        <div class="card">
+          <div class="container">
+            <h4><b>Product Added to cart:</b></h4>
+            <p>{productAdd}</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="container">
+            <h4><b>Cart view:</b></h4>
+            <p> {CartView}</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="container">
+            <h4><b>Checkout inititate:</b></h4>
+            <p> {checkout}</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="container">
+            <h4><b>Update shipping Address:</b></h4>
+            <p> {onUpdate}</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="container">
+            <h4><b>Payment inititate:</b></h4>
+            <p> {paymentInititate}</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="container">
+            <h4><b>Order Placed</b></h4>
+            <p> {orderPlaced}</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="container">
+            <h4><b>Product Added to wishlist:</b></h4>
+            <p>{wishlistCount}</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="container">
+            <h4><b>Product Remove to wishlist:</b></h4>
+            <p>{wishListRemoveCount}</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="container">
+            <h4><b>Page Views:</b></h4>
+            <p> {pageView}</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="container">
+            <h4><b>Product clicks:</b></h4>
+            <p> {productClicks}</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="container">
+            <h4><b>Product Remove from cart:</b></h4>
+            <p>{productRemove}</p>
+          </div>
+        </div>
+
+      </div>
     </div>
   );
 }
