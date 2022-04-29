@@ -115,7 +115,7 @@ window.rtag = ((methodType, data) => {
     }
 
     if (methodType === 'updateOrderStatus') {
-        fetch(`http://localhost:9000//v1/sites/${siteId}/orders/${orderId}/updateOrderStatus`, {
+        fetch(`http://localhost:9000/v1/sites/${siteId}/orders/${orderId}/updateOrderStatus`, {
             method: 'POST',
             mode: 'cors',
             headers: {

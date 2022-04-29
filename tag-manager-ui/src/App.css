@@ -124,7 +124,7 @@
   font-size: 14px;
 }
 
-.sidepanel{
+.sidepanel, .Orderpanel{
   height: 100%;
   width: 600px;
   background-color:#f1f6f7;
@@ -137,16 +137,19 @@
   padding-top: 60px;
 }
 
-.sidepanel .closebtn {
+ .closebtn {
   position: absolute;
   top: 0;
   right: 25px;
   font-size: 36px;
 }
 
-.hideSidePanel{
+
+
+.hideSidePanel, .hideOrderPanel{
   display:none;
 }
+
 
 .itemLabel{
   margin: 10px;
@@ -208,4 +211,10 @@ textarea.ant-input.shippingAddres{
 .successLabel{
   color: green;
   font-size: 26px;
+}
+
+.ant-select-disabled.ant-select:not(.ant-select-customize-input) .ant-select-selector{
+  background-color: white;
+  color: black;
+
 }

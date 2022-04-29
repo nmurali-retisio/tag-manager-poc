@@ -21,13 +21,19 @@ function App() {
   const [addressToggle, setAddressToggle] = useState(true)
   const [checkoutInitiate, setCheckoutInitiate] = useState(false)
   const [sidePanelToggle, setSidePanelToggle] = useState(false)
+  const [orderPanelToggle, setOrderPanelToggle] = useState(false)
   const [cartItems, setCartItems] = useState([]);
+
   const [totalQuantity, setTotalQuantity] = useState(0)
   const [totalPrice, setTotalPrice] = useState(0)
   const [deviceType, setDeviceType] = useState('')
   const [paymentType, setPaymentType] = useState('')
   const [loadingToggle, setLoadingToggle] = useState(false)
   const [orderPlaced, setOrderPlaced] = useState(false)
+  const [orderStatus, setOrderStatus] = useState("Preparing for dispatch")
+  const [updateOrderStatus, setupdateOrderStatus] = useState(true)
+
+  let randomNumber = 775665
 
   let cartProduct = {
     productId: '',
@@ -39,7 +45,16 @@ function App() {
     discount: ''
   }
 
+  let orderPlacedItems = {
+    orderID: '',
+    orderStatus: '',
+    modelNumber: '',
+    quantity: '',
+    price: '',
+    items: []
+  }
 
+  const [orderedItems, setOrderedItems] = useState([]);
 
   const deviceParam = () => {
     if (isMobile) {
@@ -64,7 +79,7 @@ function App() {
     })
 
     const item = e.target.value;
-    console.log(product)
+    //console.log(product)
     cartProduct.productId = product.productId
     cartProduct.productName = product.productName
     cartProduct.modelNumber = product.modelNumber
@@ -77,6 +92,7 @@ function App() {
     setItemQuantity(itemQuantity + 1)
     setItemCount(itemCount + 1)
     // setShowItemToggle(true)
+
   }
 
   const onItemQuantityReduce = () => {
@@ -266,7 +282,6 @@ function App() {
     setSidePanelToggle(false)
   }
 
-
   const orderPlacedHandler = () => {
     window.rtag('placeOrder', {
       'method': 'orderPlaceEvent',
@@ -303,22 +318,51 @@ function App() {
         'timeStamp': moment(new Date()).format("DD-MM-YYYYTHH:MM")
       }
     })
-    console.log(cartItems.length)
-    for (let i = cartItems.length; i > 0; i--) {
-      console.log(cartItems.length)
-      cartItems.pop()
+
+    randomNumber = randomNumber + 8398;
+    // console.log(cartItems)
+    orderPlacedItems.orderID = "m" + randomNumber
+    orderPlacedItems.orderStatus = orderStatus
+    orderPlacedItems.quantity = totalQuantity
+    orderPlacedItems.price = totalPrice
+
+
+
+    // 
+    //console.log(orderedItems)
+    for (let i = cartItems.length - 1; i >= 0; i--) {
+      //console.log(cartItems.length)
+      orderPlacedItems.items[i] = cartItems.pop()
     }
     if (cartItems.length === 0) {
+      setOrderedItems([...orderedItems, orderPlacedItems])
       setOrderPlaced(true)
       setItemCount(0)
+      setTotalPrice(0)
+      setTotalQuantity(0)
     }
-    console.log(cartItems)
+    //console.log(cartItems)
   }
 
   const onChangetoHome = () => {
-
+    console.log(orderedItems)
     setOrderPlaced(false)
     setLoadingToggle(false)
+  }
+
+  const onPlacedOrderCart = () => {
+    setOrderPanelToggle(true)
+  }
+
+  const onOrderStatusUpdate = (value) => {
+    window.rtag('updateOrderStatus', {
+      'method': 'updateOrderStatusEvent',
+      'data': {
+        "statusCode": value,
+        "timestamp": moment(new Date()).format("DD-MM-YYYYTHH:MM")
+      }
+    })
+
   }
 
   return (
@@ -334,8 +378,8 @@ function App() {
 
         </div>
 
-        <Button className='loginButton' type="primary" size='large'>
-          Login
+        <Button className='loginButton' type="primary" size='large' onClick={onPlacedOrderCart}>
+          Order
         </Button>
 
       </header>
@@ -449,7 +493,29 @@ Mankato Mississippi 96522
         </div>
       </section>
 
+      <section className={orderPanelToggle === false ? "hideOrderPanel " : 'Orderpanel'}>
+        <a className="closebtn" onClick={() => setOrderPanelToggle(false)}>×</a>
+        <div>
+          <ul className='itemLists'>
+            {orderedItems.length > 0 ?
+              orderedItems.map((item, key) => (<>
+                <div className='cartViewList'>
+                  <li key={key}>{item.orderID}</li>
+                  <label  >{item.quantity}</label>
+                  <label >{item.price}</label>
+                  <Select className='updateStatus' defaultValue={item.orderStatus} disabled={updateOrderStatus} onChange={onOrderStatusUpdate}>
+                    <Option value="CANCELED">Cancel</Option>
+                    <Option value="RETURNED">return</Option>
 
+                  </Select>
+                  {updateOrderStatus ? <Button onClick={() => setupdateOrderStatus(false)}>update status</Button> : <Button onClick={() => setupdateOrderStatus(true)}>submit</Button>}
+                </div>
+
+              </>)) : ""}
+
+          </ul>
+        </div>
+      </section>
     </div>
   );
 }
